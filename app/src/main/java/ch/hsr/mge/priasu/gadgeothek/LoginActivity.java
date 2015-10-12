@@ -32,6 +32,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.hsr.mge.gadgeothek.service.Callback;
+import ch.hsr.mge.gadgeothek.service.LibraryService;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -186,7 +189,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            //mAuthTask.execute((Void) null);
         }
     }
 
@@ -294,46 +297,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+    public class UserLoginTask implements Callback<Boolean> {//AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
 
         UserLoginTask(String email, String password) {
+            LibraryService.login(email, password, this);
             mEmail = email;
             mPassword = password;
         }
 
         @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
+        public void onCompletion(Boolean input) {
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (input) {
                 finish();
+                // TODO Go to next Activity
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
@@ -341,7 +323,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected void onCancelled() {
+        public void onError(String message) {
+            // TODO Show Error.. (Server unrechable etc.)
+            mPasswordView.setError(message);
+            mPasswordView.requestFocus();
             mAuthTask = null;
             showProgress(false);
         }
