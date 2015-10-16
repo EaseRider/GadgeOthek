@@ -13,25 +13,17 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_main">MainActivity</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <!-- Strings related to RegisterActivity -->
+    <string name="title_activity_register">Registrieren</string>
 
-    <!-- Strings related to Register -->
     <string name="prompt_username">Benutzername</string>
     <string name="prompt_mail">E-Mail-Adresse</string>
     <string name="prompt_setPWD">Passwort</string>
     <string name="prompt_repeatPWD">erneut eingeben</string>
     <string name="prompt_matNr">Matrikelnummer</string>
     <string name="prompt_adress">Adresse</string>
-    <string name="menuSubtitle">Deine GadgOthek</string>
-    <string name="ausleihe">Ausleihe</string>
-    <string name="reservierung">Reservierung</string>
-    <string name="options">Optionen</string>
 
     <string name="label_username">Benutzername</string>
     <string name="label_mail">E-Mail-Adresse</string>
@@ -41,5 +33,20 @@
     <string name="label_adress">Adresse</string>
 
     <string name="button_register">Registrieren</string>
+
+    <!-- String related to MainActivity -->
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="menuSubtitle">Deine GadgOthek</string>
+    <string name="ausleihe">Ausleihe</string>
+    <string name="reservierung">Reservierung</string>
+    <string name="options">Optionen</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Strings added automatically -->
+
 
 </resources>
