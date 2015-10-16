@@ -8,36 +8,74 @@
     tools:context="ch.hsr.mge.priasu.gadgeothek.RegisterActivity"
     android:orientation="vertical">
 
-    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_username"
+        />
     <EditText
+        android:id="@+id/regName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_username"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_mail"
+        />
     <EditText
+        android:id="@+id/regMail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_mail"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_setPWD"
+        />
     <EditText
+        android:id="@+id/regPwd1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_setPWD"
         />
-
     <EditText
+        android:id="@+id/regPwd2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/prompt_repeatPWD"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_matNr"
+        />
+    <EditText
+        android:id="@+id/regStudNr"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_matNr"
         />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_adress"
+        />
     <EditText
+        android:id="@+id/regAdress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/prompt_adress"/>
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_register"
+        android:onClick="sendRegistration"/>
 
 </LinearLayout>

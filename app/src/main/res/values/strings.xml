@@ -29,4 +29,13 @@
     <string name="prompt_matNr">Matrikelnummer</string>
     <string name="prompt_adress">Adresse</string>
 
+    <string name="label_username">Benutzername</string>
+    <string name="label_mail">E-Mail-Adresse</string>
+    <string name="label_setPWD">Passwort eingeben</string>
+    <string name="label_repeatPWD">Passwort erneut eingeben</string>
+    <string name="label_matNr">Matrikelnummer</string>
+    <string name="label_adress">Adresse</string>
+
+    <string name="button_register">Registrieren</string>
+
 </resources>
