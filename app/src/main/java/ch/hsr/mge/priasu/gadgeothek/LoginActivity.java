@@ -47,7 +47,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-
+    /**
+     * A dummy authentication store containing known user names and passwords.
+     * TODO: remove after connecting to a real authentication system.
+     */
+    private static final String[] DUMMY_CREDENTIALS = new String[]{
+            "r@hsr.ch:12345", "bar@example.com:world"
+    };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -202,6 +208,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 @Override
                 public void onError(String message) {
+                    Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(mainActivity);
                     // TODO Show Error.. (Server unrechable etc.)
                     mPasswordView.setError(message);
                     mPasswordView.requestFocus();

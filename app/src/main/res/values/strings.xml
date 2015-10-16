@@ -28,5 +28,9 @@
     <string name="prompt_repeatPWD">erneut eingeben</string>
     <string name="prompt_matNr">Matrikelnummer</string>
     <string name="prompt_adress">Adresse</string>
+    <string name="menuSubtitle">Deine GadgOthek</string>
+    <string name="ausleihe">Ausleihe</string>
+    <string name="reservierung">Reservierung</string>
+    <string name="options">Optionen</string>
 
 </resources>
