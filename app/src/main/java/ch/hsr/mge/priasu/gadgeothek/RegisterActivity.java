@@ -30,20 +30,17 @@ public class RegisterActivity extends Activity {
     }
 
     protected void sendRegistration(){
-
         if (mPwd1View==mPwd2View){
             LibraryService.register(mMailView.toString(), mPwd1View.toString(),
                     mNameView.toString(), mStudNrView.toString(), new Callback<Boolean>() {
                         @Override
                         public void onCompletion(Boolean input) {
-
-
                             if (input) {
                                 // TODO Go to next Activity
                                 Intent loginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(loginActivity);
                             } else {
-
+                                // TODO Registration Failed
                             }
                         }
 
@@ -53,11 +50,7 @@ public class RegisterActivity extends Activity {
 
                         }
                     });
-        }
 
-
-
-        //register(String mail, String password, String name, String studentenNumber, final Callback<Boolean> callback)
     }
-
+}
 }
