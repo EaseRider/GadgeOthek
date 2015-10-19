@@ -33,7 +33,7 @@ public class LibraryService {
         HashMap<String, String> parameter = new HashMap<>();
         parameter.put("email", mail);
         parameter.put("password", password);
-        Request<LoginToken> request = new Request<>(HttpVerb.POST, serverUrl + "public/login", LoginToken.class, parameter, new Callback<LoginToken>() {
+        Request<LoginToken> request = new Request<>(HttpVerb.POST, serverUrl + "/public/login", LoginToken.class, parameter, new Callback<LoginToken>() {
             @Override
             public void onCompletion(LoginToken input) {
                 token = input;

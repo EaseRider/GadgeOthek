@@ -38,7 +38,7 @@ public class RegisterActivity extends Activity {
         String sMail = mMail.getText().toString();
         EditText mName = (EditText) findViewById(R.id.regName);
         String sName = mName.getText().toString();
-        EditText mStudNr = (EditText) findViewById(R.id.regStudNr);
+        final EditText mStudNr = (EditText) findViewById(R.id.regStudNr);
         String sStudNr = mStudNr.getText().toString();
 
         if (sPwd1.contentEquals(sPwd2)){
@@ -59,12 +59,17 @@ public class RegisterActivity extends Activity {
                         @Override
                         public void onError(String message) {
                             // TODO Show Error.. (Server unrechable etc.)
-                            Intent registerActivity = new Intent(RegisterActivity.this, RegisterActivity.class);
-                            startActivity(registerActivity);
+                            mStudNr.setError(message);
+                            mStudNr.requestFocus();
+                            //Intent registerActivity = new Intent(RegisterActivity.this, RegisterActivity.class);
+                            //startActivity(registerActivity);
 
                         }
                     });
 
+        } else{
+            mPwd2.setError("Passwords are not the same");
+            mPwd2.requestFocus();
         }
     }
 }
