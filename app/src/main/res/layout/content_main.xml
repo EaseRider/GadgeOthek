@@ -11,5 +11,5 @@
     <fragment android:id="@+id/loanFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        class="ch.hsr.mge.gadgeothek.domain.LoanFragment"/>
+        class="ch.hsr.mge.priasu.gadgeothek.LoanFragment"/>
 </FrameLayout>

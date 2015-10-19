@@ -15,11 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import ch.hsr.mge.gadgeothek.domain.LoanFragment;
-import ch.hsr.mge.gadgeothek.service.LibraryService;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, LoanFragment.OnFragmentInteractionListener {
+
+    private LoanFragment loanFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // Load LoanFragment at beginnung.
-        LoanFragment loanFragment = new LoanFragment();//(LoanFragment)getSupportFragmentManager().findFragmentById(R.id.loanFragment);
+        loanFragment = new LoanFragment();//(LoanFragment)getSupportFragmentManager().findFragmentById(R.id.loanFragment);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.mainFrame, loanFragment);
         transaction.addToBackStack(null);

@@ -1,4 +1,4 @@
-package ch.hsr.mge.gadgeothek.domain;
+package ch.hsr.mge.priasu.gadgeothek;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import ch.hsr.mge.priasu.gadgeothek.R;
 import ch.hsr.mge.gadgeothek.domain.dummy.DummyContent;
 
 /**
