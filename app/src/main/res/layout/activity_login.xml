@@ -61,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:text="@string/action_register"
                         android:layout_gravity="left"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="registerActivity"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
