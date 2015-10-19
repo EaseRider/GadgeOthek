@@ -53,4 +53,9 @@ public class Loan {
     public void setGadget(Gadget gadget) {
         this.gadget = gadget;
     }
+
+    @Override
+    public String toString() {
+        return id;
+    }
 }

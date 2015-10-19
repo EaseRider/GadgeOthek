@@ -12,10 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import ch.hsr.mge.gadgeothek.domain.Loan;
-import ch.hsr.mge.gadgeothek.domain.dummy.DummyContent;
+import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -26,7 +23,7 @@ import ch.hsr.mge.gadgeothek.domain.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class LoanFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class ReservierungFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,8 +48,8 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static LoanFragment newInstance(String param1, String param2) {
-        LoanFragment fragment = new LoanFragment();
+    public static ReservierungFragment newInstance(String param1, String param2) {
+        ReservierungFragment fragment = new ReservierungFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,7 +61,7 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public LoanFragment() {
+    public ReservierungFragment() {
     }
 
     @Override
@@ -76,17 +73,15 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Get Loans from Service
-        ArrayList<Loan> items = new ArrayList<Loan>();
-        items.add(new Loan("Loan id 1", null, null, null));
-        items.add(new Loan("Loan id 2", null, null, null));
-        mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, items);
+        // TODO: Change Adapter to display your content
+        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_loan, container, false);
+        View view = inflater.inflate(R.layout.fragment_reservierung, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);

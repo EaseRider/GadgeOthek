@@ -16,9 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoanFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, LoanFragment.OnFragmentInteractionListener, ReservierungFragment.OnFragmentInteractionListener {
 
     private LoanFragment loanFragment = null;
+    private ReservierungFragment reservFragment = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.mainFrame, loanFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
+        //create Other Fragments also at beginning
+        reservFragment = new ReservierungFragment();
 
     }
 
@@ -107,11 +112,16 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         if (id == R.id.nav_ausleihe) {
-            // Handle the camera action
+            transaction.replace(R.id.mainFrame, loanFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_reservierung) {
-
+            transaction.replace(R.id.mainFrame, reservFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_options) {
 
         }

@@ -33,6 +33,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.hsr.mge.gadgeothek.service.AppSettings;
 import ch.hsr.mge.gadgeothek.service.Callback;
 import ch.hsr.mge.gadgeothek.service.LibraryService;
 
@@ -64,11 +65,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private AppSettings mSettings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LibraryService.setServerAddress("http://10.0.2.2:8080");
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -93,6 +94,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 attemptLogin();
             }
         });
+
+        mSettings = new AppSettings(this);
+        LibraryService.setServerAddress(mSettings.getSetting(AppSettings.E.SERVER_ADRESS));
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -208,8 +212,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 @Override
                 public void onError(String message) {
-                    Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(mainActivity);
+                    /*Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(mainActivity);*/
                     // TODO Show Error.. (Server unrechable etc.)
                     mPasswordView.setError(message);
                     mPasswordView.requestFocus();
