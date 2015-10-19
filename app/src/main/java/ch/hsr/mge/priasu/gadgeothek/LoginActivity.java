@@ -95,6 +95,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        Button mRegisterButton = (Button) findViewById(R.id.register_button);
+        mRegisterButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerActivity();
+            }
+        });
+
         mSettings = new AppSettings(this);
         LibraryService.setServerAddress(mSettings.getSetting(AppSettings.E.SERVER_ADRESS));
 
@@ -326,7 +334,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void registerActivity(){
-
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
     }

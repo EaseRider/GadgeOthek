@@ -22,7 +22,7 @@
     <string name="prompt_username">Benutzername</string>
     <string name="prompt_mail">E-Mail-Adresse</string>
     <string name="prompt_setPWD">Passwort</string>
-    <string name="prompt_repeatPWD">erneut eingeben</string>
+    <string name="prompt_repeatPWD">Passwort erneut eingeben</string>
     <string name="prompt_matNr">Matrikelnummer</string>
     <string name="prompt_adress">Adresse</string>
 
