@@ -91,7 +91,6 @@ public class LibraryService {
         request.execute();
     }
 
-
     public static void getLoansForCustomer(final Callback<List<Loan>> callback) {
         if (token == null) {
             throw new IllegalStateException("Not logged in");

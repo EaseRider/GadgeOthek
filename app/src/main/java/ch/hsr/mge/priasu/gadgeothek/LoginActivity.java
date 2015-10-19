@@ -38,7 +38,6 @@ import ch.hsr.mge.gadgeothek.service.Callback;
 import ch.hsr.mge.gadgeothek.service.LibraryService;
 
 import static android.Manifest.permission.READ_CONTACTS;
-// Buhuhu find me hahaha hgh gg
 /**
  * A login screen that offers login via email/password.
  */

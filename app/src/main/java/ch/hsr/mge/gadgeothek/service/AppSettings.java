@@ -13,7 +13,7 @@ import android.preference.PreferenceManager;
     private final Context context;
 
     public enum E {
-        SERVER_ADRESS("http://152.96.238.75:8080/");
+        SERVER_ADRESS("http://152.96.238.75:8080");
 
         private String def;
         E(String s) {
