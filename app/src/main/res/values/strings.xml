@@ -37,10 +37,10 @@
     <!-- String related to MainActivity -->
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="menuSubtitle">Deine GadgOthek</string>
-    <string name="ausleihe">Ausleihe</string>
-    <string name="reservierung">Reservierung</string>
-    <string name="options">Optionen</string>
+    <string name="nav_label_menuSubtitle">Deine GadgOthek</string>
+    <string name="nav_label_ausleihe">Ausleihe</string>
+    <string name="nav_label_reservierung">Reservierung</string>
+    <string name="nav_label_options">Optionen</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 

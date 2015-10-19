@@ -1,5 +1,7 @@
 package ch.hsr.mge.priasu.gadgeothek;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,10 +15,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import ch.hsr.mge.gadgeothek.domain.LoanFragment;
 import ch.hsr.mge.gadgeothek.service.LibraryService;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, LoanFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,30 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Load LoanFragment at beginnung.
+        LoanFragment loanFragment = new LoanFragment();//(LoanFragment)getSupportFragmentManager().findFragmentById(R.id.loanFragment);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.add(R.id.mainFrame, loanFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
+    private Fragment recreateFragment(Fragment f)
+    {
+        try {
+            Fragment.SavedState savedState = getSupportFragmentManager().saveFragmentInstanceState(f);
+
+            Fragment newInstance = f.getClass().newInstance();
+            newInstance.setInitialSavedState(savedState);
+
+            return newInstance;
+        }
+        catch (Exception e) // InstantiationException, IllegalAccessException
+        {
+            throw new RuntimeException("Cannot reinstantiate fragment " + f.getClass().getName(), e);
+        }
     }
 
     @Override
@@ -82,22 +109,21 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camara) {
+        if (id == R.id.nav_ausleihe) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_reservierung) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_options) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(String id) {
+
     }
 }

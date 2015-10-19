@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single" android:title="@string/menuSubtitle">
-        <item android:id="@+id/nav_camara" android:icon="@android:drawable/ic_menu_camera"
-            android:title="@string/ausleihe" />
-        <item android:id="@+id/nav_gallery" android:icon="@android:drawable/ic_menu_gallery"
-            android:title="@string/reservierung" />
-        <item android:id="@+id/nav_slideshow" android:icon="@android:drawable/ic_menu_slideshow"
-            android:title="@string/options" />
+    <group android:checkableBehavior="single" android:title="@string/nav_label_menuSubtitle">
+        <item android:id="@+id/nav_ausleihe" android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/nav_label_ausleihe" />
+        <item android:id="@+id/nav_reservierung" android:icon="@android:drawable/ic_menu_gallery"
+            android:title="@string/nav_label_reservierung" />
+        <item android:id="@+id/nav_options" android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="@string/nav_label_options" />
     </group>
 </menu>
