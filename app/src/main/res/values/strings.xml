@@ -45,6 +45,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+
+    <string name="loanList_label_noFound">Leider keine Ausleihen gefunden.</string>
+    <string name="loanList_label_loading">Ausleihen werden geladen.</string>
+
     <string name="action_settings">Settings</string>
 
     <!-- Strings added automatically -->

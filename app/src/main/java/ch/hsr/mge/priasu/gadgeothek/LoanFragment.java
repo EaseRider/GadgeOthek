@@ -10,12 +10,16 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ch.hsr.mge.gadgeothek.domain.Loan;
 import ch.hsr.mge.gadgeothek.domain.dummy.DummyContent;
+import ch.hsr.mge.gadgeothek.service.Callback;
+import ch.hsr.mge.gadgeothek.service.LibraryService;
 
 /**
  * A fragment representing a list of Items.
@@ -43,6 +47,8 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
      * The fragment's ListView/GridView.
      */
     private AbsListView mListView;
+
+    private ProgressBar mProgressBar;
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
@@ -74,13 +80,9 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        };
 
-        // TODO: Get Loans from Service
-        ArrayList<Loan> items = new ArrayList<Loan>();
-        items.add(new Loan("Loan id 1", null, null, null));
-        items.add(new Loan("Loan id 2", null, null, null));
-        mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, items);
+
     }
 
     @Override
@@ -94,6 +96,30 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+
+        mProgressBar = (ProgressBar) view.findViewById(R.id.empty_progressbar);
+
+        // TODO: Get Loans from Service
+        mProgressBar.setVisibility(View.VISIBLE);
+
+        setEmptyText(getString(R.string.loanList_label_noFound));
+        LibraryService.getLoansForCustomer(new Callback<List<Loan>>() {
+            @Override
+            public void onCompletion(List<Loan> input) {
+                mProgressBar.setVisibility(View.GONE);
+                if (input.size() > 0)
+                    mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, input);
+                else
+                    setEmptyText(getString(R.string.loanList_label_noFound));
+            }
+
+            @Override
+            public void onError(String message) {
+                mProgressBar.setVisibility(View.GONE);
+                setEmptyText(getString(R.string.loanList_label_noFound) + message);
+            }
+        });
 
         return view;
     }
