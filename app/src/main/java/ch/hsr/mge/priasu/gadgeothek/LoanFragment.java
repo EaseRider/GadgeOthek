@@ -54,7 +54,7 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private ArrayAdapter<Loan> mAdapter;
 
     // TODO: Rename and change types of parameters
     public static LoanFragment newInstance(String param1, String param2) {
@@ -108,14 +108,20 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
             @Override
             public void onCompletion(List<Loan> input) {
                 mProgressBar.setVisibility(View.GONE);
-                if (input.size() > 0)
-                    mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, input);
-                else
+                mAdapter.clear();
+                if (input.size() > 0) {
+                    for (Loan loan : input)
+                        mAdapter.insert(loan, mAdapter.getCount());
+                } else {
                     setEmptyText(getString(R.string.loanList_label_noFound));
+                }
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onError(String message) {
+                mAdapter.clear();
+                mAdapter.notifyDataSetChanged();
                 mProgressBar.setVisibility(View.GONE);
                 setEmptyText(getString(R.string.loanList_label_noFound) + message);
             }

@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity
 
     private LoanFragment loanFragment = null;
     private ReservierungFragment reservFragment = null;
+    FloatingActionButton addButton = null;
 
 
     @Override
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.mainFrame, loanFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
+        // Disable +-Buton in Loan-View
+        addButton = (FloatingActionButton)findViewById(R.id.addButton);
+        addButton.setVisibility(View.GONE);
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
@@ -114,7 +119,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+        // Disable +-Buton in all Views, Enable, where needed
+        addButton = (FloatingActionButton)findViewById(R.id.addButton);
+        addButton.setVisibility(View.GONE);
         if (id == R.id.nav_ausleihe) {
+
             transaction.replace(R.id.mainFrame, loanFragment);
             transaction.addToBackStack(null);
             transaction.commit();
