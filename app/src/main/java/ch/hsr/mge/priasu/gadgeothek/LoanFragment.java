@@ -82,7 +82,7 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
             mParam2 = getArguments().getString(ARG_PARAM2);
         };
 
-
+        mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
                 mAdapter.clear();
                 mAdapter.notifyDataSetChanged();
                 mProgressBar.setVisibility(View.GONE);
-                setEmptyText(getString(R.string.loanList_label_noFound) + message);
+                setEmptyText(getString(R.string.loanList_label_noFound) + " " + message);
             }
         });
 

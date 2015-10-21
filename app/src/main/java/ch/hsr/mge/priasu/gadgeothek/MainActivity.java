@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity
 
     private LoanFragment loanFragment = null;
     private ReservierungFragment reservFragment = null;
-    FloatingActionButton addButton = null;
 
 
     @Override
@@ -29,15 +28,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,10 +44,6 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.mainFrame, loanFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-
-        // Disable +-Buton in Loan-View
-        addButton = (FloatingActionButton)findViewById(R.id.addButton);
-        addButton.setVisibility(View.GONE);
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
@@ -120,10 +106,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
         // Disable +-Buton in all Views, Enable, where needed
-        addButton = (FloatingActionButton)findViewById(R.id.addButton);
-        addButton.setVisibility(View.GONE);
         if (id == R.id.nav_ausleihe) {
-
             transaction.replace(R.id.mainFrame, loanFragment);
             transaction.addToBackStack(null);
             transaction.commit();

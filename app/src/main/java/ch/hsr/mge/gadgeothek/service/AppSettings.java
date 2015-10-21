@@ -14,7 +14,7 @@ import android.preference.PreferenceManager;
 
     public enum E {
         // This is your local pc's IP, so change it!
-        SERVER_ADRESS("http://192.168.1.140:8080");
+        SERVER_ADRESS("http://152.96.235.102:8080");
 
         private String def;
         E(String s) {

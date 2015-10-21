@@ -10,8 +10,15 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.List;
+
+import ch.hsr.mge.gadgeothek.domain.Loan;
+import ch.hsr.mge.gadgeothek.domain.Reservation;
+import ch.hsr.mge.gadgeothek.service.Callback;
+import ch.hsr.mge.gadgeothek.service.LibraryService;
 import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
 
 /**
@@ -41,11 +48,13 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
      */
     private AbsListView mListView;
 
+    private ProgressBar mProgressBar;
+
     /**
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private ArrayAdapter<Reservation> mAdapter = null;
 
     // TODO: Rename and change types of parameters
     public static ReservierungFragment newInstance(String param1, String param2) {
@@ -73,9 +82,8 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        mAdapter = new ArrayAdapter<Reservation>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1);
+
     }
 
     @Override
@@ -89,6 +97,35 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        mProgressBar = (ProgressBar) view.findViewById(R.id.empty_progressbar);
+
+        // TODO: Get Loans from Service
+        mProgressBar.setVisibility(View.VISIBLE);
+
+        setEmptyText(getString(R.string.reservierungsList_label_noFound));
+        LibraryService.getReservationsForCustomer(new Callback<List<Reservation>>() {
+            @Override
+            public void onCompletion(List<Reservation> input) {
+                mProgressBar.setVisibility(View.GONE);
+                mAdapter.clear();
+                if (input.size() > 0) {
+                    for (Reservation reserv : input)
+                        mAdapter.insert(reserv, mAdapter.getCount());
+                } else {
+                    setEmptyText(getString(R.string.loanList_label_noFound));
+                }
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(String message) {
+                mAdapter.clear();
+                mAdapter.notifyDataSetChanged();
+                mProgressBar.setVisibility(View.GONE);
+                setEmptyText(getString(R.string.reservierungsList_label_noFound)+ " " + message);
+            }
+        });
 
         return view;
     }
