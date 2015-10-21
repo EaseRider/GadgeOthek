@@ -1,5 +1,6 @@
 package ch.hsr.mge.priasu.gadgeothek;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -9,10 +10,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import ch.hsr.mge.gadgeothek.domain.Reservation;
+import ch.hsr.mge.gadgeothek.service.Callback;
+import ch.hsr.mge.gadgeothek.service.LibraryService;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ReservierungFragment.ReservationListener {
@@ -115,6 +119,24 @@ public class MainActivity extends AppCompatActivity
             transaction.commit();
         } else if (id == R.id.nav_options) {
 
+        } else if (id == R.id.nav_logout){
+            LibraryService.logout(new Callback<Boolean>() {
+                                      @Override
+                                      public void onCompletion(Boolean input) {
+                                          if (input) {
+                                              Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                                              startActivity(intent);
+                                          } else {
+
+                                          }
+                                      }
+
+                                      @Override
+                                      public void onError(String message) {
+                                      // TODO Show Error.. (Server unrechable etc.)
+
+                                      }
+            });
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
