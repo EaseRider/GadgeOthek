@@ -26,7 +26,7 @@ import ch.hsr.mge.gadgeothek.service.LibraryService;
  * with a GridView.
  * <p/>
  */
-public class ReservierungFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class ReservierungFragment extends Fragment implements AbsListView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private ReservationListener mListener;
 
@@ -75,6 +75,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+        mListView.setOnItemLongClickListener(this);
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.empty_progressbar);
 
@@ -127,6 +128,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mListView.setSelection(position);
         if (null != mListener) {
             mListener.onEditReservation(mAdapter.getItem(position));
         }
@@ -143,6 +145,11 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
         if (emptyView instanceof TextView) {
             ((TextView) emptyView).setText(emptyText);
         }
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return false;
     }
 
     /**
