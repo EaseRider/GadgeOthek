@@ -79,4 +79,9 @@ public class Reservation {
     public void setReady(boolean isReady) {
         this.isReady = isReady;
     }
+
+    @Override
+    public String toString() {
+        return gadget.getName();
+    }
 }

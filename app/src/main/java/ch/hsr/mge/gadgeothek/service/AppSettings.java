@@ -41,7 +41,6 @@ import android.preference.PreferenceManager;
         SharedPreferences.Editor edit = prefs.edit();
         edit.putString(e.name(), val);
         edit.commit();
-        //prefs.getStringSet(e.name(), );
     }
 
 

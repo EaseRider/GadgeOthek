@@ -56,6 +56,6 @@ public class Loan {
 
     @Override
     public String toString() {
-        return id;
+        return gadget.getName();
     }
 }

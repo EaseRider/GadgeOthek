@@ -41,7 +41,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private ReservationListener mListener;
 
     /**
      * The fragment's ListView/GridView.
@@ -134,7 +134,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (ReservationListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -150,9 +150,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            mListener.onEditReservation(mAdapter.getItem(position));
         }
     }
 
@@ -179,9 +177,10 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface ReservationListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        public void onAddReservation();
+        public void onEditReservation(Reservation reservation);
     }
 
 }
