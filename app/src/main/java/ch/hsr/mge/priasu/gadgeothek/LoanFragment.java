@@ -1,6 +1,5 @@
 package ch.hsr.mge.priasu.gadgeothek;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,11 +12,9 @@ import android.widget.ListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ch.hsr.mge.gadgeothek.domain.Loan;
-import ch.hsr.mge.gadgeothek.domain.dummy.DummyContent;
 import ch.hsr.mge.gadgeothek.service.Callback;
 import ch.hsr.mge.gadgeothek.service.LibraryService;
 
@@ -29,15 +26,6 @@ import ch.hsr.mge.gadgeothek.service.LibraryService;
  * <p/>
  */
 public class LoanFragment extends Fragment implements AbsListView.OnItemClickListener {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     /**
      * The fragment's ListView/GridView.
@@ -52,12 +40,9 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
      */
     private ArrayAdapter<Loan> mAdapter;
 
-    // TODO: Rename and change types of parameters
-    public static LoanFragment newInstance(String param1, String param2) {
+    public static LoanFragment newInstance() {
         LoanFragment fragment = new LoanFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -72,12 +57,6 @@ public class LoanFragment extends Fragment implements AbsListView.OnItemClickLis
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        };
-
         mAdapter = new ArrayAdapter<Loan>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1);
     }
 

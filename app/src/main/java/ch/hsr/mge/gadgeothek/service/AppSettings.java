@@ -14,7 +14,11 @@ import android.preference.PreferenceManager;
 
     public enum E {
         // This is your local pc's IP, so change it!
-        SERVER_ADRESS("http://152.96.235.102:8080");
+        SERVER_ADRESS("http://152.96.235.102:8080"),
+        //Customer ID of logged in User
+        CUSTOMER_ID(""),
+        // Security Token for session
+        SECURITY_TOKEN("");
 
         private String def;
         E(String s) {
@@ -24,9 +28,6 @@ import android.preference.PreferenceManager;
             return def;
         }
     }
-
-    public final String SERVER_ADRESS = "SERVER_ADRESS";
-
 
     public AppSettings(Context cont) {
         context = cont;

@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -131,4 +132,12 @@ public class MainActivity extends AppCompatActivity
     public void onEditReservation(Reservation reservation) {
 
     }
+
+    public void onEditReservationClose() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.mainFrame, reservFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

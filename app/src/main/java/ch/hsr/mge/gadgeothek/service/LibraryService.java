@@ -17,6 +17,8 @@ import ch.hsr.mge.gadgeothek.domain.Reservation;
 public class LibraryService {
     
     private static final String TAG = LibraryService.class.getSimpleName();
+
+
     private static LoginToken token;
     private static String serverUrl;
 
@@ -210,6 +212,14 @@ public class LibraryService {
 
     static Gson createGsonObject() {
         return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+    }
+
+    public static void setToken(LoginToken token) {
+        LibraryService.token = token;
+    }
+
+    public static LoginToken getToken() {
+        return token;
     }
 }
 

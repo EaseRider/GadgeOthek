@@ -15,11 +15,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ch.hsr.mge.gadgeothek.domain.Loan;
 import ch.hsr.mge.gadgeothek.domain.Reservation;
 import ch.hsr.mge.gadgeothek.service.Callback;
 import ch.hsr.mge.gadgeothek.service.LibraryService;
-import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -27,19 +25,8 @@ import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
- * interface.
  */
 public class ReservierungFragment extends Fragment implements AbsListView.OnItemClickListener {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private ReservationListener mListener;
 
@@ -57,12 +44,8 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
     private ArrayAdapter<Reservation> mAdapter = null;
 
     // TODO: Rename and change types of parameters
-    public static ReservierungFragment newInstance(String param1, String param2) {
+    public static ReservierungFragment newInstance() {
         ReservierungFragment fragment = new ReservierungFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -76,11 +59,6 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
         mAdapter = new ArrayAdapter<Reservation>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1);
 

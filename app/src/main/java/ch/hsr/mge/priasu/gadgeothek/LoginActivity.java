@@ -208,6 +208,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     showProgress(false);
 
                     if (input) {
+                        // save Token in Settings
+                        mSettings.setSetting(AppSettings.E.CUSTOMER_ID, LibraryService.getToken().getCustomerId());
+                        mSettings.setSetting(AppSettings.E.CUSTOMER_ID, LibraryService.getToken().getCustomerId());
+
                         Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(mainActivity);
                         // TODO Go to next Activity
