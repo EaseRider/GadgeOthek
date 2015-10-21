@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
+import ch.hsr.mge.gadgeothek.domain.Gadget;
 
 /**
  * A fragment representing a list of Items.
@@ -75,8 +75,9 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        /*mAdapter = new ArrayAdapter<Gadget>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, null);
+                */
     }
 
     @Override
@@ -116,7 +117,7 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
         }
     }
 
