@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity
 
     private LoanFragment loanFragment = null;
     private ReservierungFragment reservFragment = null;
+    private BibliothekFragment bibliothekFragment = null;
+
 
 
     @Override
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
+        bibliothekFragment = new BibliothekFragment();
 
     }
 
@@ -137,6 +140,10 @@ public class MainActivity extends AppCompatActivity
 
                                       }
             });
+        } else if (id==R.id.nav_bibliothek){
+            transaction.replace(R.id.mainFrame, reservFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
