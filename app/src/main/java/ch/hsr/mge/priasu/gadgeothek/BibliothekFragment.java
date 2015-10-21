@@ -83,34 +83,6 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        setEmptyText(getString(R.string.biblio_label_noFound));
-
-        LibraryService.getGadgets(new Callback<List<Gadget>>() {
-            @Override
-            public void onCompletion(List<Gadget> input) {
-                mAdapter.clear();
-                if (input.size() > 0) {
-                    for (Gadget g : input)
-                        mAdapter.insert(g, mAdapter.getCount());
-                } else {
-
-                }
-
-                for (Gadget g: input) {
-
-                }
-                mAdapter.notifyDataSetChanged();;
-            }
-
-            @Override
-            public void onError(String message) {
-
-            }
-        });
-
-
-
-
 
     }
 
