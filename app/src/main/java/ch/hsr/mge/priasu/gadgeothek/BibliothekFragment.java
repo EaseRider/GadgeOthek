@@ -13,7 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.util.List;
+
 import ch.hsr.mge.gadgeothek.domain.Gadget;
+import ch.hsr.mge.gadgeothek.domain.Reservation;
+import ch.hsr.mge.gadgeothek.service.Callback;
+import ch.hsr.mge.gadgeothek.service.LibraryService;
 
 /**
  * A fragment representing a list of Items.
@@ -46,7 +51,7 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private ArrayAdapter<Gadget> mAdapter;
 
     // TODO: Rename and change types of parameters
     public static BibliothekFragment newInstance(String param1, String param2) {
@@ -69,15 +74,44 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: Change Adapter to display your content
+        mAdapter = new ArrayAdapter<Gadget>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, (Gadget[]) null);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        /*mAdapter = new ArrayAdapter<Gadget>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, null);
-                */
+        setEmptyText(getString(R.string.biblio_label_noFound));
+
+        LibraryService.getGadgets(new Callback<List<Gadget>>() {
+            @Override
+            public void onCompletion(List<Gadget> input) {
+                mAdapter.clear();
+                if (input.size() > 0) {
+                    for (Gadget g : input)
+                        mAdapter.insert(g, mAdapter.getCount());
+                } else {
+
+                }
+
+                for (Gadget g: input) {
+
+                }
+                mAdapter.notifyDataSetChanged();;
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
+
+
+
+
+
     }
 
     @Override
@@ -91,6 +125,33 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        setEmptyText(getString(R.string.biblio_label_noFound));
+
+        LibraryService.getGadgets(new Callback<List<Gadget>>() {
+            @Override
+            public void onCompletion(List<Gadget> input) {
+                mAdapter.clear();
+                if (input.size() > 0) {
+                    for (Gadget g : input)
+                        mAdapter.insert(g, mAdapter.getCount());
+                } else {
+
+                }
+
+                for (Gadget g: input) {
+
+                }
+                mAdapter.notifyDataSetChanged();;
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
+
+
 
         return view;
     }
