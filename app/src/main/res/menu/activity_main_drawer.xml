@@ -6,7 +6,12 @@
             android:title="@string/nav_label_ausleihe" />
         <item android:id="@+id/nav_reservierung" android:icon="@android:drawable/ic_menu_gallery"
             android:title="@string/nav_label_reservierung" />
+        <item android:id="@+id/nav_bibliothek" android:icon="@android:drawable/ic_input_add"
+            android:title="@string/nav_label_bibliothek"/>
         <item android:id="@+id/nav_options" android:icon="@android:drawable/ic_menu_slideshow"
             android:title="@string/nav_label_options" />
+        <item android:id="@+id/nav_logout" android:icon="@android:drawable/ic_lock_power_off"
+            android:title="@string/nav_label_logout" />
+
     </group>
 </menu>
