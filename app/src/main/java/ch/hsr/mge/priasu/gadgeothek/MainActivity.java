@@ -117,33 +117,35 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.mainFrame, loanFragment);
             transaction.addToBackStack(null);
             transaction.commit();
+            setTitle(getString(R.string.nav_label_ausleihe));
         } else if (id == R.id.nav_reservierung) {
             transaction.replace(R.id.mainFrame, reservFragment);
             transaction.addToBackStack(null);
             transaction.commit();
+            setTitle(getString(R.string.nav_label_reservierung));
         } else if (id == R.id.nav_bibliothek) {
-            transaction.replace(R.id.mainFrame, bibliothekFragemnt);
+            transaction.replace(R.id.mainFrame, bibliothekFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_options) {
 
         } else if (id == R.id.nav_logout){
             LibraryService.logout(new Callback<Boolean>() {
-                                      @Override
-                                      public void onCompletion(Boolean input) {
-                                          if (input) {
-                                              Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                                              startActivity(intent);
-                                          } else {
+                @Override
+                public void onCompletion(Boolean input) {
+                    if (input) {
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    } else {
 
-                                          }
-                                      }
+                    }
+                }
 
-                                      @Override
-                                      public void onError(String message) {
-                                      // TODO Show Error.. (Server unrechable etc.)
+                @Override
+                public void onError(String message) {
+                    // TODO Show Error.. (Server unrechable etc.)
 
-                                      }
+                }
             });
         }
 

@@ -24,4 +24,35 @@
         android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
         android:src="@drawable/ic_action_add" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal|bottom"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/res_errorText"
+
+                android:layout_gravity="center_horizontal|bottom"
+                android:textColor="#ff0000"
+                android:layout_above="@+id/res_hintText"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/reservierungsList_label_deleteHint"
+                android:id="@+id/res_hintText"
+                android:textColor="#bcb6b6"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+
 </FrameLayout>
