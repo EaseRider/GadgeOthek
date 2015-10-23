@@ -4,7 +4,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="prompt_IP">Serveradresse (optional)</string>
+    <string name="prompt_IP">Server (zB: "http://152.96.236.23:8080")</string>
     <string name="action_register">Register</string>
     <string name="action_sign_in">Sign in</string>
 
@@ -50,6 +50,8 @@
 
     <string name="loanList_label_noFound">Es wurden keine Ausleihen gefunden.</string>
     <string name="loanList_label_loading">Ausleihen werden geladen.</string>
+    <string name="gadgetList_label_noFound">Es wurden keine Gadgets gefunden.</string>
+    <string name="gadgetList_label_loading">Gadgets werden geladen.</string>
 
     <string name="reservierungsList_label_noFound">Es wurden keine Reservierungen gefunden.</string>
     <string name="biblio_label_noFound">Die Bibliothek enthält keine Objekte.</string>

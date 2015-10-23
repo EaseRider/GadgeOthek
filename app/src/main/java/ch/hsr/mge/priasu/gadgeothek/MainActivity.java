@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity
 
     private LoanFragment loanFragment = null;
     private ReservierungFragment reservFragment = null;
-    private BibliothekFragment bibliothekFragment = null;
+    private BiblioFragment biblioFragment = null;
 
 
 
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
-        bibliothekFragment = new BibliothekFragment();
+        biblioFragment = new BiblioFragment();
 
     }
 
@@ -121,6 +120,10 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.mainFrame, reservFragment);
             transaction.addToBackStack(null);
             transaction.commit();
+        } else if (id == R.id.nav_biblio) {
+            transaction.replace(R.id.mainFrame, biblioFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_options) {
 
         } else if (id == R.id.nav_logout){
@@ -141,10 +144,6 @@ public class MainActivity extends AppCompatActivity
 
                                       }
             });
-        } else if (id==R.id.nav_bibliothek){
-            transaction.replace(R.id.mainFrame, bibliothekFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
         }
 
 
