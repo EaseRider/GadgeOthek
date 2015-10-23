@@ -1,8 +1,11 @@
 package ch.hsr.mge.priasu.gadgeothek;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +30,7 @@ import ch.hsr.mge.priasu.gadgeothek.dummy.DummyContent;
  * with a GridView.
  * <p/>
  */
-public class BibliothekFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class BibliothekFragment extends Fragment implements AbsListView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     /**
      * The fragment's ListView/GridView.
@@ -36,6 +39,7 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
 
     private ProgressBar mProgressBar;
 
+    private TextView mErrorText;
     /**
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
@@ -69,9 +73,11 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
+        mErrorText = (TextView) view.findViewById(R.id.res_errorText);
+
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
-
+        mListView.setOnItemLongClickListener(this);
 
         mProgressBar = (ProgressBar) view.findViewById(R.id.empty_progressbar);
 
@@ -128,4 +134,39 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
         }
     }
 
+    @Override
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+        return onLongListItemClick(view, position, id);
+    }
+    protected boolean onLongListItemClick(View v, final int pos, long id) {
+        final Gadget pGadget = mAdapter.getItem(pos);
+        Log.i("ListView", "onLongListItemClick Reservation=" + pGadget.toString());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        mErrorText.setText("");
+        builder.setMessage(getString(R.string.bibliothekList_label_addQuestion).replace("=gadget=", pGadget.getName()))
+                .setCancelable(false)
+                .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        LibraryService.reserveGadget(pGadget, new Callback<Boolean>() {
+                            @Override
+                            public void onCompletion(Boolean input) {
+                                mErrorText.setText(getString(R.string.biblio_label_allready_3));
+                            }
+
+                            @Override
+                            public void onError(String message) {
+                                mErrorText.setText(message);
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Nein", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+        return true;
+    }
 }

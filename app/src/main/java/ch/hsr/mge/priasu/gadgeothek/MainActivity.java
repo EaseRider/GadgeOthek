@@ -128,9 +128,10 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.mainFrame, bibliothekFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-        } else if (id == R.id.nav_options) {
+            setTitle(getString(R.string.nav_label_bibliothek));
+        }/* else if (id == R.id.nav_options) {
 
-        } else if (id == R.id.nav_logout){
+        } */else if (id == R.id.nav_logout){
             LibraryService.logout(new Callback<Boolean>() {
                 @Override
                 public void onCompletion(Boolean input) {

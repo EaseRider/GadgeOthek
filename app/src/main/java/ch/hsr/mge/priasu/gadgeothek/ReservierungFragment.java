@@ -205,7 +205,7 @@ public class ReservierungFragment extends Fragment implements AbsListView.OnItem
         final Reservation pReservation = mAdapter.getItem(pos);
         Log.i("ListView", "onLongListItemClick Reservation=" + pReservation.toString());
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage(getString(R.string.reservierungsList_label_deleteQuestion).replace("%gadget%", pReservation.getGadget().getName()))
+        builder.setMessage(getString(R.string.reservierungsList_label_deleteQuestion).replace("=gadget=", pReservation.getGadget().getName()))
                 .setCancelable(false)
                 .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
