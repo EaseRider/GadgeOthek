@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
 
     private LoanFragment loanFragment = null;
     private ReservierungFragment reservFragment = null;
+    private BibliothekFragment bibliothekFragment = null;
 
 
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
+        bibliothekFragment = new BibliothekFragment();
 
 
     }
@@ -120,7 +122,9 @@ public class MainActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.nav_bibliothek) {
-
+            transaction.replace(R.id.mainFrame, bibliothekFragemnt);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_options) {
 
         } else if (id == R.id.nav_logout){
