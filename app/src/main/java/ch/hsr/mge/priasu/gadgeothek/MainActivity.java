@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
         transaction.add(R.id.mainFrame, loanFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+        setTitle(getString(R.string.nav_label_ausleihe));
 
         //create Other Fragments also at beginning
         reservFragment = new ReservierungFragment();
