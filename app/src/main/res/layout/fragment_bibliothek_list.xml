@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/reservierungsList_label_deleteHint"
+            android:text="@string/bibliothekList_label_addReservation"
             android:id="@+id/res_hintText"
             android:textColor="#bcb6b6"
             android:layout_alignParentBottom="true"

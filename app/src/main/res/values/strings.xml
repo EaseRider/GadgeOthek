@@ -55,6 +55,7 @@
 
     <string name="reservierungsList_label_deleteQuestion">Möchten Sie die Reservierung von =gadget= wirklich löschen?</string>
     <string name="bibliothekList_label_addQuestion">Möchten Sie dieses Gadget =gadget= reservieren? (max. 3 Reservierungen)</string>
+    <string name="bibliothekList_label_addReservation">Tipp: Langes Drücken zum Hinzufügen.</string>
 
     <string name="reservierungsList_label_noFound">Es wurden keine Reservierungen gefunden.</string>
     <string name="biblio_label_noFound">Die Bibliothek enthält keine Objekte.</string>

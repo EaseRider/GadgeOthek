@@ -150,7 +150,8 @@ public class BibliothekFragment extends Fragment implements AbsListView.OnItemCl
                         LibraryService.reserveGadget(pGadget, new Callback<Boolean>() {
                             @Override
                             public void onCompletion(Boolean input) {
-                                mErrorText.setText(getString(R.string.biblio_label_allready_3));
+                                if (!input)
+                                    mErrorText.setText(getString(R.string.biblio_label_allready_3));
                             }
 
                             @Override
